@@ -16,10 +16,12 @@
         const hoursInSeconds = 60 * 60
         const minutesInSeconds = 60
 
-        let hours = sec / hoursInSeconds
-        let minutes = sec / minutesInSeconds
+        let hours = Math.floor(sec / hoursInSeconds)
+        let minutes = Math.floor(sec / minutesInSeconds) 
 
-        document.write(`Кількість годин: ${Math.round(hours)}, кількість хвилин: ${Math.round(minutes)}`)
+        let remainingMinutes = (sec % hoursInSeconds) / minutesInSeconds
+
+        document.write(`Кількість годин: ${hours}, кількість хвилин: ${minutes}, або це буде: ${hours} годин(а/и) та ${Math.floor(remainingMinutes)} хвилин(и).`)
     </script>
 </body>
 </html>

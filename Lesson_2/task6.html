@@ -18,11 +18,11 @@
         let num2 = parseInt(prompt('Введіть кількість першого товару', 0))
         let num3 = parseInt(prompt('Введіть кількість першого товару', 0))
 
-        let theCostOfTheFirstProduct = (price1 * num1)
-        let theCostOfTheSecondProduct = (price2 * num2)
-        let theCostOfTheThirdProduct = (price3 * num3)
+        let theCostOfTheFirstProduct = price1 * num1
+        let theCostOfTheSecondProduct = price2 * num2
+        let theCostOfTheThirdProduct = price3 * num3
 
-        let theTotalCost = parseFloat(theCostOfTheFirstProduct + theCostOfTheSecondProduct + theCostOfTheThirdProduct)
+        let theTotalCost = theCostOfTheFirstProduct + theCostOfTheSecondProduct + theCostOfTheThirdProduct
 
 
         document.write(`
