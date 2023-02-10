@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 6</title>
+</head>
+<body>
+    <h1>Задача 6</h1>
+    <p>З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.</p>
+    <script>
+        let price1 = parseFloat(prompt('Введіть вартість першого товару', '0'))
+        let price2 = parseFloat(prompt('Введіть вартість другого товару', '0'))
+        let price3 = parseFloat(prompt('Введіть вартість третього товару', '0'))
+
+        let num1 = parseInt(prompt('Введіть кількість першого товару', 0))
+        let num2 = parseInt(prompt('Введіть кількість першого товару', 0))
+        let num3 = parseInt(prompt('Введіть кількість першого товару', 0))
+
+        let theCostOfTheFirstProduct = (price1 * num1)
+        let theCostOfTheSecondProduct = (price2 * num2)
+        let theCostOfTheThirdProduct = (price3 * num3)
+
+        let theTotalCost = parseFloat(theCostOfTheFirstProduct + theCostOfTheSecondProduct + theCostOfTheThirdProduct)
+
+
+        document.write(`
+            <table border="2px">
+                <tr>
+                    <th>Шуканий результат</th>
+                    <th>Отриманий результат</th>
+                </tr>
+                <tr>
+                    <th>Загальна вартість першого товару</th>
+                    <td>${theCostOfTheFirstProduct.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <th>Загальна вартість другого товару</th>
+                    <td>${theCostOfTheSecondProduct.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <th>Загальна вартість третього товару</th>
+                    <td>${theCostOfTheThirdProduct.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <th>Всього</th>
+                    <td>${theTotalCost.toFixed(2)}</td>
+                </tr>
+            </table>
+        `)
+    </script>
+</body>
+</html>
