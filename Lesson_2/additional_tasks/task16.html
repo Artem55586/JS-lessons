@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 16</title>
+</head>
+<body>
+    <h1>Задача 16</h1>
+    <p>З клавіатури вводиться номер місяця. Визначити, який буде місяць через вказану кількість N місяців.</p>
+    <script>
+        let theNumberOfMonths = parseInt(prompt('Введіть номер місяця від 1 до 12', '1'))
+        let additionalMonths = parseInt(prompt('Введіть додаткову кількість місяців', '0'))
+
+        const numberOfMonthsInAYear = 12
+
+        let newTheNumberOfMonths = ((theNumberOfMonths + additionalMonths - 1) % numberOfMonthsInAYear + 1)
+
+        document.write(`Новий місяць буде під номером: ${newTheNumberOfMonths}.`)
+    </script>
+</body>
+</html>

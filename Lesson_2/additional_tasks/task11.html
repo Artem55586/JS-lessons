@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 11</title>
+</head>
+<body>
+    <h1>Задача 11</h1>
+    <p>Дано поточну кількість годин, хвилин, секунд (як на годиннику). 
+    Визначити 1) яка кількість секунд буде на годиннику через N секунд.
+    2) яка кількість хвилин буде на годиннику через N секунд, X хвилин.
+    </p>
+    <script>
+        let theCurrentNumberOfHours = parseInt(prompt('Введіть поточну кількість годин', '0'))
+        let theCurrentNumberOfMinutes = parseInt(prompt('Введіть поточну кількість хвилин', '0'))
+        let theCurrentNumberOfSeconds = parseInt(prompt('Введіть поточну кількість секунд', '0'))
+
+        let numberOfMinutesElapsed = parseInt(prompt('Введіть скільки пройшло хвилин', '0'))
+        let numberOfSecondsElapsed = parseInt(prompt('Введіть скільки пройшло секунд', '0'))
+
+        const theNumberOfSecondsInAMinute = 60
+        const theNumberOfMinutesInHour = 60
+
+        let newTheCurrentNumberOfSeconds = (theCurrentNumberOfSeconds + numberOfSecondsElapsed) % theNumberOfSecondsInAMinute
+        let newTheCurrentNumberOfMinutes = ((theCurrentNumberOfMinutes + numberOfMinutesElapsed) % theNumberOfMinutesInHour) + ((theCurrentNumberOfSeconds + numberOfSecondsElapsed) / theNumberOfSecondsInAMinute)
+
+        document.write(`1) Кількість секунд буде на годиннику через N секунд: ${newTheCurrentNumberOfSeconds}; 2) Кількість хвилин буде на годиннику через N секунд, X хвилин: ${Math.floor(newTheCurrentNumberOfMinutes)}`)
+    </script>
+</body>
+</html>

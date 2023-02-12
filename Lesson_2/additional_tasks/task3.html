@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 3</title>
+</head>
+<body>
+    <h1>Задача 3</h1>
+    <p>З клавіатури вводяться вартість одиниці та кількість одиниць двох товарів. Вивести на екран вартість кожного з видів товарів окремо і загальну вартість</p>
+    <script>
+        let price1 = parseFloat(prompt('Введіть вартість першого товару', '0'))
+        let price2 = parseFloat(prompt('Введіть вартість другого товару', '0'))
+
+        let num1 = parseInt(prompt('Введіть кількість першого товару', 0))
+        let num2 = parseInt(prompt('Введіть кількість першого товару', 0))
+
+        let theCostOfTheFirstProduct = (price1 * num1)
+        let theCostOfTheSecondProduct = (price2 * num2)
+
+        let theTotalCost = parseFloat(theCostOfTheFirstProduct + theCostOfTheSecondProduct)
+
+        document.write(`Вартість першого товару: ${theCostOfTheFirstProduct.toFixed(2)}, Вартість другого товару: ${theCostOfTheSecondProduct.toFixed(2)}, Загальна вартість товару ${theTotalCost.toFixed(2)}`)
+    </script>
+</body>
+</html>

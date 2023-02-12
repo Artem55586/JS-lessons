@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 12</title>
+</head>
+<body>
+    <h1>Задача 12</h1>
+    <p>З клавіатури вводиться кількість монет номіналом 2 копійки (5коп, 25коп, 50 коп). Визначити скільки гривень і копійок є у даній сумі.
+    </p>
+    <script>
+        let numberOfCoins2 = parseInt(prompt('Введіть кількість монет номіналом 2 копійки', '0'))
+        let numberOfCoins5 = parseInt(prompt('Введіть кількість монет номіналом 5 копійок', '0'))
+        let numberOfCoins25 = parseInt(prompt('Введіть кількість монет номіналом 25 копійок', '0'))
+        let numberOfCoins50 = parseInt(prompt('Введіть кількість монет номіналом 50 копійок', '0'))
+
+        const thуNumberOfPennies2InTheHryvnia = 50
+        const thуNumberOfPennies5InTheHryvnia = 20
+        const thуNumberOfPennies25InTheHryvnia = 4
+        const thуNumberOfPennies50InTheHryvnia = 2
+
+        let numberOfHryvniaOfCoins2 = Math.floor(numberOfCoins2 / thуNumberOfPennies2InTheHryvnia)
+        let theRestOfThePennies2 = (numberOfCoins2 % thуNumberOfPennies2InTheHryvnia) * 2
+
+        let numberOfHryvniaOfCoins5 = Math.floor(numberOfCoins5 / thуNumberOfPennies5InTheHryvnia)
+        let theRestOfThePennies5 = (numberOfCoins5 % thуNumberOfPennies5InTheHryvnia) * 5
+
+        let numberOfHryvniaOfCoins25 = Math.floor(numberOfCoins25 / thуNumberOfPennies25InTheHryvnia)
+        let theRestOfThePennies25 = (numberOfCoins25 % thуNumberOfPennies25InTheHryvnia) * 25
+
+        let numberOfHryvniaOfCoins50 = Math.floor(numberOfCoins50 / thуNumberOfPennies50InTheHryvnia)
+        let theRestOfThePennies50 = (numberOfCoins50 % thуNumberOfPennies50InTheHryvnia) * 50
+
+        document.write(`Кількість гривень з 2 копійок: ${numberOfHryvniaOfCoins2} гривень(гривня) та ${theRestOfThePennies2} копійки(копійок), `)
+        document.write(`Кількість гривень з 5 копійок: ${numberOfHryvniaOfCoins5} гривень(гривня) та ${theRestOfThePennies5} копійки(копійок), `)
+        document.write(`Кількість гривень з 25 копійок: ${numberOfHryvniaOfCoins25} гривень(гривня) та ${theRestOfThePennies25} копійки(копійок), `)
+        document.write(`Кількість гривень з 50 копійок: ${numberOfHryvniaOfCoins50} гривень(гривня) та ${theRestOfThePennies50} копійки(копійок).`)
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 9</title>
+</head>
+<body>
+    <h1>Задача 9</h1>
+    <p>Скласти програму для розв’язування задачі: йде N-а секунда доби, визначити скільки повних годин і повних хвилин пройшло до цього моменту. </p>
+    <script>
+        let secOfTheDay = parseInt(prompt('Введіть кількість секунд, що пройшла від початку доби', '0'))
+
+        const hoursInSeconds = 60 * 60
+        const minutesInSeconds = 60
+
+        let hours = Math.floor(secOfTheDay / hoursInSeconds)
+        let minutes = Math.floor(secOfTheDay / minutesInSeconds) 
+
+        let remainingMinutes = (secOfTheDay % hoursInSeconds) / minutesInSeconds
+
+        document.write(`Кількість годин: ${hours}, кількість хвилин: ${minutes}, або це буде: ${hours} годин(а/и) та ${Math.floor(remainingMinutes)} хвилин(и).`)
+    </script>
+</body>
+</html>

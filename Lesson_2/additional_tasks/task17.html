@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 17</title>
+</head>
+<body>
+    <h1>Задача 17</h1>
+    <p>Зашифрувати один введений англійський символ у верхньому регістрі (один з символів: A,B,…Z)  методом зміщення (шифр Цезаря).</p>
+    <script>
+        let symbol = prompt('Введіть англійський символ у верхньому регістрі (один з символів: A,B,…Z)', 'A')
+        let bias = parseInt(prompt('Введіть шаг зміщення', '0'))
+
+        let firstSymbol = 65
+        let symbolCode = symbol.charCodeAt()
+        const lineAlphabet = 26
+
+        let newSymbol = (symbolCode - firstSymbol + bias) % lineAlphabet + firstSymbol
+
+        document.write(`Новий символ: ${String.fromCharCode(newSymbol)}.`)
+    </script>
+</body>
+</html>
