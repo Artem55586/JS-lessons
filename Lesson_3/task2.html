@@ -16,8 +16,8 @@
 
         if(amountOfMoney < thePriceOfTheProduct)
             document.write(`Не вистачає грошей. Ви не зможете купити цей товар.`)
-
-        else document.write(`Купіть лотерею за ${lotteryPrice} гривні/гривень`)
+        else if (amountOfMoney > thePriceOfTheProduct)
+            document.write(`Купіть лотерею за ${lotteryPrice} гривні/гривень`)
     </script>
 </body>
 </html>

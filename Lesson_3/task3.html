@@ -10,21 +10,21 @@
     <h1>Задача 3</h1>
     <p>Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.</p>
     <script>
-        let number1 = parseInt(prompt('Введіть число від 1 до 5', '1'))
+        let number = parseInt(prompt('Введіть число від 1 до 5', '1'))
 
-        let min = Math.ceil(1);
-        let max = Math.floor(5);
+        let min = 1
+        let max = 5
         let randomNum = Math.floor(Math.random() * (max - min + 1)) + min
 
-        if(number1 === randomNum) 
+        if(number === randomNum) 
             document.write(`Вітаємо! Ви вгадали число.`)
 
-        else if (number1 !== randomNum) {
+        else {
             alert('Ви не вгадали число.')
 
-            let number2 = parseInt(prompt('Введіть число від 1 до 5', '1'))
+            number = parseInt(prompt('Введіть число від 1 до 5', '1'))
 
-            if(number2 === randomNum)
+            if(number === randomNum)
                 document.write(`Вітаємо! Ви вгадали число`)
             
             else document.write(`Ви не вгадали число. Спроби закінчились.`)
