@@ -1,44 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Задача 13</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Задача 13</h1>
-    <p>Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель.</p>
+    <p>
+      Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі
+      розміром N*M. Маючи К снарядів користувач намагається потопити корабель.
+    </p>
     <script>
-        const numberOfWidth = parseInt(prompt('Введіть розмір поля по горизонталі N', ''))
-        const numberOfHeight = parseInt(prompt('Введіть розмір поля по вертикалі M', ''))
+      const numberOfWidth = parseInt(
+        prompt("Введіть розмір поля по горизонталі N", "")
+      )
+      const numberOfHeight = parseInt(
+        prompt("Введіть розмір поля по вертикалі M", "")
+      )
 
-        let counterNumberOfShells = 0
-        let minOfWidth = 0 
-        let minOfHeight = 0
+      let counterNumberOfShells = 0
+      let minOfWidth = 0
+      let minOfHeight = 0
 
-        let horizontalPositionOfTheShip = minOfWidth + Math.floor(Math.random() * (numberOfWidth - minOfWidth + 1))
-        let shipVerticalPosition = minOfHeight + Math.floor(Math.random() * (numberOfHeight - minOfHeight + 1))
+      let horizontalPositionOfTheShip =
+        minOfWidth +
+        Math.floor(Math.random() * (numberOfWidth - minOfWidth + 1))
+      let shipVerticalPosition =
+        minOfHeight +
+        Math.floor(Math.random() * (numberOfHeight - minOfHeight + 1))
 
-        let numberOfShells = parseInt(prompt('Введіть кількість снарядів K', ''))
-        let horizontalCoordinatesOfTheShot = parseInt(prompt('Введіть координати вашого пострілу по горизонталі', ''))
-        let verticalCoordinatesOfTheShot = parseInt(prompt('Введіть координати вашого пострілу по вертикалі', ''))
+      let numberOfShells = parseInt(prompt("Введіть кількість снарядів K", ""))
+      let horizontalCoordinatesOfTheShot = parseInt(
+        prompt("Введіть координати вашого пострілу по горизонталі", "")
+      )
+      let verticalCoordinatesOfTheShot = parseInt(
+        prompt("Введіть координати вашого пострілу по вертикалі", "")
+      )
 
-
-        while (counterNumberOfShells < numberOfShells) {
-            if (horizontalPositionOfTheShip === horizontalCoordinatesOfTheShot && shipVerticalPosition === verticalCoordinatesOfTheShot) {
-            alert(`Ви влучили та перемогли!`)
-            break
-            }
-            else {
-                alert(`Ви не влучили! Спробуйте ще!`)
-                counterNumberOfShells++
-                horizontalCoordinatesOfTheShot = parseInt(prompt('Введіть координати вашого пострілу по горизонталі', ''))
-                verticalCoordinatesOfTheShot = parseInt(prompt('Введіть координати вашого пострілу по вертикалі', ''))
-            }
+      while (counterNumberOfShells < numberOfShells) {
+        if (
+          horizontalPositionOfTheShip === horizontalCoordinatesOfTheShot &&
+          shipVerticalPosition === verticalCoordinatesOfTheShot
+        ) {
+          alert(`Ви влучили та перемогли!`)
+          break
+        } else {
+          alert(`Ви не влучили! Спробуйте ще!`)
+          counterNumberOfShells++
+          horizontalCoordinatesOfTheShot = parseInt(
+            prompt("Введіть координати вашого пострілу по горизонталі", "")
+          )
+          verticalCoordinatesOfTheShot = parseInt(
+            prompt("Введіть координати вашого пострілу по вертикалі", "")
+          )
         }
-        if (numberOfShells === counterNumberOfShells)
-            alert(`Ви програли!`)
+      }
+      if (numberOfShells === counterNumberOfShells) alert(`Ви програли!`)
     </script>
-</body>
+  </body>
 </html>

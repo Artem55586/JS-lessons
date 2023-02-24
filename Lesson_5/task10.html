@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Задача 10</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Задача 10</h1>
-    <p>Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.</p>
+    <p>
+      Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем
+      числами.
+    </p>
     <script>
-        const numberMin = parseInt(prompt('Введіть найменше число для діапазону', ''))
-        const numberMax = parseInt(prompt('Введіть найбільше число для діапазону', ''))
-        let sum = 0
+      const numberMin = parseInt(
+        prompt("Введіть найменше число для діапазону", "")
+      )
+      const numberMax = parseInt(
+        prompt("Введіть найбільше число для діапазону", "")
+      )
+      let sum = 0
 
-        for (let i = 0; i <= numberMax; i++) {
-            if (!(i % 2 === 0))
-            sum = sum + i
-        }
-        document.write(sum)
+      for (let i = numberMin; i <= numberMax; i++) {
+        if (!(i % 2 === 0)) sum = sum + i
+      }
+      document.write(sum)
     </script>
-</body>
+  </body>
 </html>

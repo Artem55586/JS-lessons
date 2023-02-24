@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Задача 15</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Задача 15</h1>
-    <p>Користувач поступово вводить показники температури протягом року. Знайти середню температуру.</p>
+    <p>
+      Користувач поступово вводить показники температури протягом року. Знайти
+      середню температуру.
+    </p>
     <script>
-        let sumTemp = 0
-        let counter = 0
-        let dailyTemperature = parseFloat(prompt('Введіть температуру', ''))
-        let averageTemperature
+      let sumTemp = 0
+      let counter = 0
+      let dailyTemperature
+      let averageTemperature
 
-        for(let i = 0; i < 365; i++){
-            if (! isFinite(dailyTemperature)) break
-            sumTemp = sumTemp + dailyTemperature
-            counter++
-            dailyTemperature = parseFloat(prompt('Введіть температуру', ''))
-        }
-        averageTemperature = sumTemp / counter
-        document.write(averageTemperature.toFixed(1))
+      for (let i = 0; i < 365; i++) {
+        dailyTemperature = parseFloat(prompt("Введіть температуру", ""))
+        if (!isFinite(dailyTemperature)) break
+        sumTemp += dailyTemperature
+        counter++
+      }
+      averageTemperature = sumTemp / counter
+      document.write(averageTemperature.toFixed(1))
     </script>
-</body>
+  </body>
 </html>
