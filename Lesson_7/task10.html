@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 10</title>
+  </head>
+  <body>
+    <h1>Задача 10</h1>
+    <p>
+      Дано покази температур (довільна кількість). Розробити функцію, яка
+      дозволить знайти середнє значення для додатних показів температури.
+    </p>
+    <script>
+      function normalValueForPositiveTemperatureReadings() {
+        let sumTemperatures = 0
+        let counter = 0
+        let temperature = parseFloat(prompt("Введіть температуру:"))
+
+        while (!isNaN(temperature)) {
+          if (temperature > 0) {
+            sumTemperatures = sumTemperatures + temperature
+            counter++
+          }
+          temperature = parseFloat(prompt("Введіть температуру:"))
+        }
+        let average
+        if (counter > 0) average = sumTemperatures / counter
+        return average
+      }
+      let result = normalValueForPositiveTemperatureReadings()
+      document.write(
+        `Середнє значення для додатних показів температури становить: ${result}`
+      )
+    </script>
+  </body>
+</html>

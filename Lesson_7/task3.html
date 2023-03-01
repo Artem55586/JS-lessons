@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 3</title>
+  </head>
+  <body>
+    <h1>Задача 3</h1>
+    <p>
+      Створити окремі функції, які для 4 чисел знаходять: 1)суму; 2)добуток;
+      3)середнє арифметичне; 4)мінімальне значення.
+    </p>
+    <script>
+      function getSum(a, b, c, d) {
+        let resultSum = a + b + c + d
+        return resultSum
+      }
+
+      function getProduct(a, b, c, d) {
+        let resultProduct = a * b * c * d
+        return resultProduct
+      }
+
+      function getArithmeticMean(a, b, c, d) {
+        let resultArithmeticMean = (a + b + c + d) / 4
+        return resultArithmeticMean
+      }
+
+      function getMin(a, b, c, d) {
+        let resultMin
+        if (a < b && a < c && a < d) resultMin = a
+        else if(b < a && b < c && b < d) resultMin = b
+        else if(c < a && c < b && c < d) resultMin = c
+        else resultMin = d
+        return resultMin
+      }
+
+      const a = parseInt(prompt("Введіть першу цифру"))
+      const b = parseInt(prompt("Введіть другу цифру"))
+      const c = parseInt(prompt("Введіть третю цифру"))
+      const d = parseInt(prompt("Введіть четверту цифру"))
+
+      let s = getSum(a, b, c, d)
+      let p = getProduct(a, b, c, d)
+      let ar = getArithmeticMean(a, b, c, d)
+      let min = getMin(a, b, c, d)
+      document.write(`Сумма чотирьох чисел складає: ${s}<br>
+      Добуток чотирьох чисел складає: ${p}<br>
+      Середнє арифметичне значення чотирьох чисел складає: ${ar}<br>
+      Мінімальне значення чотирьох чисел складає: ${min}<br>
+      `)
+    </script>
+  </body>
+  
+</html>

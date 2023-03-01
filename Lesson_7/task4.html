@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 4</title>
+  </head>
+  <body>
+    <h1>Задача 4</h1>
+    <p>
+      Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька
+      результатів: кількість парних, кількість додатних, кількість більших за
+      100.
+    </p>
+    <script>
+      let theNumberOfEven = 0
+      let theNumberOfPositiveOnes = 0
+      let numberGreaterThan100 = 0
+
+      function threeResult(a, b, c) {
+        if (a % 2 === 0) theNumberOfEven++
+        if (b % 2 === 0) theNumberOfEven++
+        if (c % 2 === 0) theNumberOfEven++
+
+        if (a > 0) theNumberOfPositiveOnes++
+        if (b > 0) theNumberOfPositiveOnes++
+        if (c > 0) theNumberOfPositiveOnes++
+
+        if (a > 100) numberGreaterThan100++
+        if (b > 100) numberGreaterThan100++
+        if (c > 100) numberGreaterThan100++
+
+        return theNumberOfEven, theNumberOfPositiveOnes, numberGreaterThan100
+      }
+
+      const a = parseFloat(prompt("Введіть першу цифру"))
+      const b = parseFloat(prompt("Введіть другу цифру"))
+      const c = parseFloat(prompt("Введіть третю цифру"))
+
+      threeResult(a, b, c)
+
+      document.write(
+        `Кількість парних: ${theNumberOfEven}, кількість додатних: ${theNumberOfPositiveOnes}, кількість більших за 100: ${numberGreaterThan100}`
+      )
+    </script>
+  </body>
+</html>
