@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 5</title>
+  </head>
+  <body>
+    <h1>Задача 5</h1>
+    <p>
+      Дано послідовність оцінок учня. Підрахувати кількість: 1) двійок 2)
+      кількість хороших оцінок (добре, відмінно); 3) кількість оцінок, які нижче
+      середнього.
+    </p>
+    <script>
+      function inputArray(theSequenceOfTheStudentsGrades) {
+        let gradesArray = []
+        for (let i = 1; i <= theSequenceOfTheStudentsGrades; i++) {
+          const grade = parseInt(prompt(`Введіть ${i} оцінку учня`))
+          gradesArray.push(grade)
+        }
+        return gradesArray
+      }
+
+      const theSequenceOfTheStudentsGrades = parseInt(
+        prompt("Введіть кількість оцінок учня", "1")
+      )
+      const gradesArray = inputArray(theSequenceOfTheStudentsGrades)
+
+      function theNumberOfTwos(gradesArray) {
+        let NumberOfTwos = 0
+        for (let i = 0; i < gradesArray.length; i++) {
+          if (gradesArray[i] === 2) NumberOfTwos++
+        }
+        return NumberOfTwos
+      }
+
+      const NumberOfTwos = theNumberOfTwos(gradesArray)
+
+      function theNumberOfFoursAndFives(gradesArray) {
+        let NumberOfFoursAndFives = 0
+        for (let i = 0; i < gradesArray.length; i++) {
+          if (gradesArray[i] === 4 || gradesArray[i] === 5)
+            NumberOfFoursAndFives++
+        }
+        return NumberOfFoursAndFives
+      }
+
+      const NumberOfFoursAndFives = theNumberOfFoursAndFives(gradesArray)
+
+      function theNumberOfGradesThatAreBelowTheAverageScore(gradesArray) {
+        let belowTheAverageScore = 0
+        let sum = 0
+        for (let i = 0; i < gradesArray.length; i++) {
+          sum = sum + gradesArray[i]
+        }
+        let averageScore = sum / gradesArray.length
+
+        for (let i = 0; i < gradesArray.length; i++) {
+          if (gradesArray[i] < averageScore) belowTheAverageScore++
+        }
+        return belowTheAverageScore
+      }
+
+      const belowTheAverageScore =
+        theNumberOfGradesThatAreBelowTheAverageScore(gradesArray)
+
+      document.write(
+        `Кількість двійок: ${NumberOfTwos}, кількість хороших оцінок (добре, відмінно): ${NumberOfFoursAndFives}, кількість оцінок, які нижче
+      середнього: ${belowTheAverageScore}.`
+      )
+    </script>
+  </body>
+</html>

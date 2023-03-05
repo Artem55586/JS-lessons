@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 7</title>
+  </head>
+  <body>
+    <h1>Задача 7</h1>
+    <p>
+      Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей
+      за: за весь рік; у першій половині року; у другій половині року; за літо;
+      за ІІ квартал; за парні місяці (з парними номерами); за місяці, які є
+      початковими у сезоні (весна, літо, осінь, зима).
+    </p>
+    <script>
+      function inputArray(sequenceOfPaymentsThroughoutTheYear) {
+        let paymentsArray = []
+        for (let i = 1; i <= sequenceOfPaymentsThroughoutTheYear; i++) {
+          const payment = parseInt(prompt(`Введіть ${i} платіжку за рік`))
+          paymentsArray.push(payment)
+        }
+        return paymentsArray
+      }
+
+      const sequenceOfPaymentsThroughoutTheYear = parseInt(
+        prompt("Введіть кількість платіжок за рік", "12")
+      )
+      const paymentsArray = inputArray(sequenceOfPaymentsThroughoutTheYear)
+
+      function getIncomeSum(paymentsArray, startMonthNumber, endMonthNumber) {
+        let sum = 0
+        for (let month = startMonthNumber; month <= endMonthNumber; month++) {
+          sum += paymentsArray[month - 1]
+        }
+        return sum
+      }
+
+      const sumYear = getIncomeSum(paymentsArray, 1, 12)
+      const sumHalfYear = getIncomeSum(paymentsArray, 1, 6)
+      const sumSummer = getIncomeSum(paymentsArray, 6, 8)
+      const secondQuarter = getIncomeSum(paymentsArray, 4, 6)
+
+      function getIncomeSumAny(
+        paymentsArray,
+        startMonthNumber,
+        endMonthNumber
+      ) {
+        let sumEven = 0
+        let sumInitial = 0
+        for (let month = startMonthNumber; month <= endMonthNumber; month++) {
+          if (month % 2 === 0) sumEven += paymentsArray[month - 1]
+          if (month === 3 || month === 6 || month === 9 || month === 12)
+            sumInitial += paymentsArray[month - 1]
+        }
+        return [sumEven, sumInitial]
+      }
+
+      const [sumEven, sumInitial] = getIncomeSumAny(paymentsArray, 1, 12)
+
+      document.write(`Сума грошей: <br>
+      - за весь рік: ${sumYear}<br>
+      - у першій половині року: ${sumHalfYear}<br>
+      - за літо: ${sumSummer}<br>
+      - за ІІ квартал: ${secondQuarter}<br>
+      - за парні місяці (з парними номерами): ${sumEven}<br>
+      - за місяці, які є
+      початковими у сезоні (весна, літо, осінь, зима): ${sumInitial}. 
+      `)
+    </script>
+  </body>
+</html>

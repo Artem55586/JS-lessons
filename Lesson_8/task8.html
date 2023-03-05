@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 8</title>
+  </head>
+  <body>
+    <h1>Задача 8</h1>
+    <p>
+      Дано одновимірний масив, у якому зберігається певна виграшна сума
+      (елементи заповнюються випадковим чином значеннями від -500 до 500).
+      Надаючи користувачу можливість вибирати номери елементів (поки він не
+      відмовиться). Знаходити сумарний виграш.
+    </p>
+    <script>
+      function inputArray(sumWins) {
+        let sumWinsArray = []
+        let min = -500
+        let max = 500
+        for (let i = 1; i <= sumWins; i++) {
+          const win = min + Math.floor(Math.random() * (max - min + 1))
+          sumWinsArray.push(win)
+        }
+        return sumWinsArray
+      }
+      const sumWins = parseInt(prompt(`Введіть кількість виграшів`, `1`))
+      const sumWinsArray = inputArray(sumWins)
+
+      function getResult(sumWinsArray) {
+        let counterSum = 0
+        while (true) {
+          let shoot = parseInt(
+            prompt(
+              `Введіть номер виграшу (від 1 до ${
+                sumWinsArray.length
+              }) або натисніть "Відміна", щоб завершити вибір.`
+            )
+          )
+          if (isNaN(shoot)) break
+          if (shoot < 1 || shoot > sumWinsArray.length) {
+            alert(`Ви ввели некоректний номер`)
+            continue
+          }
+          counterSum = counterSum + sumWinsArray[shoot - 1]
+        }
+        return counterSum
+      }
+
+      const counterSum = getResult(sumWinsArray)
+      document.write(`Сумарний виграш: ${counterSum}`)
+    </script>
+  </body>
+</html>

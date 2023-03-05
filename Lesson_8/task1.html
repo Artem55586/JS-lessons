@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 1</title>
+  </head>
+  <body>
+    <h1>Задача 1</h1>
+    <p>
+      Дано масив, який містить оцінки з К предметів. Знайти середній бал і
+      з’ясувати до якої категорії він відноситься (відмінник, двійочник (має
+      хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+      би одна трійка)).
+    </p>
+    <script>
+      function averageNum(scores) {
+        let sum = 0
+        for (let i = 0; i < scores.length; i++) {
+          sum = sum + scores[i]
+        }
+        let averageScore = sum / scores.length
+
+        return averageScore
+      }
+      const scores = [4, 5, 3, 2, 1]
+      const averageScore = averageNum(scores)
+
+      function studentResult(scores) {
+        let student
+        for (let i = 0; i < scores.length; i++) {
+          if (scores[i] <= 2) student = "Двійочник"
+          else if (scores[i] === 3) student = "Трійочник"
+          else if (scores[i] === 4) student = "Хорошист"
+          else if (scores[i] === 5) student = "Відмінник"
+        }
+        return student
+      }
+      const student = studentResult(scores)
+
+      document.write(`Середня оцінка = ${averageScore}, та ${student}`)
+    </script>
+  </body>
+</html>

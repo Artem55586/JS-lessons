@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 2</title>
+  </head>
+  <body>
+    <h1>Задача 2</h1>
+    <p>
+      Дано масив, який зберігає кількість відвідувачів магазину протягом тижня.
+      Вивести на екран: номери днів, протягом яких кількість відвідувачів була
+      меншою за 20; номери днів, коли кількість відвідувачів була мінімальною;
+      номери днів, коли кількість відвідувачів була мінімальною; загальну
+      кількість клієнтів у робочі дні та окремо загальну кількість днів на
+      вихідних.
+    </p>
+    <script>
+      function inputArray(numberOfStoreVisitors) {
+        let visitorsArray = []
+        for (let i = 1; i <= numberOfStoreVisitors; i++) {
+          const numberOfStoreVisitorsInDay = parseFloat(
+            prompt(`Кількість відвідувачів за ${i} день`)
+          )
+          visitorsArray.push(numberOfStoreVisitorsInDay)
+        }
+        return visitorsArray
+      }
+
+      const numberOfStoreVisitors = parseInt(prompt("Введіть кількість днів"))
+      const visitorsArray = inputArray(numberOfStoreVisitors)
+
+      function getNumberOfStoreVisitorsLessThan20(visitorsArray) {
+        let lessThan20 = []
+        for (let i = 0; i < visitorsArray.length; i++)
+          if (visitorsArray[i] < 20) lessThan20.push(i + 1)
+        return lessThan20
+      }
+
+      const lessThan20 = getNumberOfStoreVisitorsLessThan20(visitorsArray)
+
+      function getNumberOfStoreVisitorsMin(visitorsArray) {
+        let min = visitorsArray[0]
+        for (let i = 0; i < visitorsArray.length; i++) {
+          if (visitorsArray[i] < min) min = i + 1
+        }
+        return min
+      }
+
+      const min = getNumberOfStoreVisitorsMin(visitorsArray)
+
+      function getNumberOfStoreVisitorsMax(visitorsArray) {
+        let max = visitorsArray[0]
+        for (let i = 0; i < visitorsArray.length; i++) {
+          if (visitorsArray[i] > max) max = i + 1
+        }
+        return max
+      }
+
+      const max = getNumberOfStoreVisitorsMax(visitorsArray)
+
+      function getSumVisitors(visitorsArray) {
+        let sumClientsInWorkingDay = 0
+        let sumClientsInWeekendDay = 0
+        for (let i = 0; i < visitorsArray.length; i++) {
+          if (i < 5) {
+            sumClientsInWorkingDay = sumClientsInWorkingDay + visitorsArray[i]
+          } else {
+            sumClientsInWeekendDay = sumClientsInWeekendDay + visitorsArray[i]
+          }
+        }
+        return [sumClientsInWorkingDay, sumClientsInWeekendDay]
+      }
+
+      const [sumClientsInWorkingDay, sumClientsInWeekendDay] =
+        getSumVisitors(visitorsArray)
+
+      document.write(`Дні, протягом яких кількість відвідувачів була
+      меншою за 20: ${lessThan20}, <br> номери днів, коли кількість відвідувачів була мінімальною: ${min}, <br> номери днів, коли кількість відвідувачів була максимальною: ${max}, <br> загальна
+      кількість клієнтів у робочі дні: ${sumClientsInWorkingDay}, <br> загальна кількість клієнтів у вихідні дні: ${sumClientsInWeekendDay}.`)
+    </script>
+  </body>
+</html>

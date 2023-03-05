@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 4</title>
+  </head>
+  <body>
+    <h1>Задача 4</h1>
+    <p>
+      Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які
+      : • починаються на букву «А»; • перша і остання літери співпадають; •
+      складаються з більше ніш 5 символів;.
+    </p>
+    <script>
+      function inputArray(numberCars) {
+        let carsArray = []
+        for (let i = 1; i <= numberCars; i++) {
+          const carsName = prompt(`Введіть ${i} номер`)
+          carsArray.push(carsName)
+        }
+        return carsArray
+      }
+
+      const numberCars = prompt("Введіть кількість номерів автомобіля", "1")
+      const carsArray = inputArray(numberCars)
+
+      function isLetterA(carsArray) {
+        let startA = 0
+        for (let i = 0; i < carsArray.length; i++) {
+          if (carsArray[i][0].toUpperCase() === "A") startA++
+          return startA
+        }
+      }
+
+      const startA = isLetterA(carsArray)
+
+      function isTwoLetterSame(carsArray) {
+        let startEndEndLetter = 0
+        for (let i = 0; i < carsArray.length; i++) {
+          if (
+            carsArray[i][0].toUpperCase() ===
+            carsArray[i][carsArray[i].length - 1].toUpperCase()
+          )
+            startEndEndLetter++
+        }
+        return startEndEndLetter
+      }
+
+      const startEndEndLetter = isTwoLetterSame(carsArray)
+
+      function isMoreFiveLetters(carsArray) {
+        let haveMoreFiveLetters = 0
+        for (let i = 0; i < carsArray.length; i++) {
+          if (carsArray[i].length > 5) haveMoreFiveLetters++
+        }
+        return haveMoreFiveLetters
+      }
+
+      const haveMoreFiveLetters = isMoreFiveLetters(carsArray)
+
+      document.write(`Кількість номерів, які починаються на букву «А»: ${startA}, <br>
+      кількість номерів, у яких перша і остання літери співпадають ${startEndEndLetter}, <br>
+      кількість номерів, які складаються з більше ніш 5 символів ${haveMoreFiveLetters}.
+      `)
+    </script>
+  </body>
+</html>

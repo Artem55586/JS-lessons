@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 9</title>
+  </head>
+  <body>
+    <h1>Задача 9</h1>
+    <p>
+      Морський бій. Користувач вводить кількість клітинок одновимірного масиву
+      та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні
+      кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста,
+      якщо 1 – то це означає, що там є корабель. Користувач вводить номер
+      клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть
+      потоплені усі кораблі.
+    </p>
+    <script>
+      const cellsNumber = parseInt(prompt(`Введіть кількість клітинок:`))
+      const boatsNumber = parseInt(
+        prompt(`Введіть кількість одиночних кораблів:`)
+      )
+
+      function getArrayOfShips(cellsNumber, boatsNumber) {
+        let shipsArray = []
+        let min = 0
+        let max = 1
+        for (let c = 0; c < cellsNumber; c++) {
+          for (let b = 0; b < boatsNumber; b++) {
+            const placementOfTheShip =
+              min + Math.floor(Math.random() * (max - min + 1))
+            shipsArray.push(placementOfTheShip)
+          }
+        }
+        return shipsArray
+      }
+
+      const shipsArray = getArrayOfShips(cellsNumber, boatsNumber)
+
+      let remainingShips = boatsNumber
+      let attempts = 0
+
+      while (remainingShips > 0) {
+        const guess = parseInt(prompt(`Введіть номер клітинки`))
+        if (shipsArray[guess] === 1) {
+          alert(`Мінус корабель!`)
+          remainingShips--
+        } else alert(`Не влучили!`)
+        attempts++
+      }
+
+      document.write(`Потопили всі кораблі за ${attempts} ходів.`)
+    </script>
+  </body>
+</html>
