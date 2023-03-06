@@ -28,12 +28,14 @@
       const averageScore = averageNum(scores)
 
       function studentResult(scores) {
+        let min = scores[0]
         let student
         for (let i = 0; i < scores.length; i++) {
-          if (scores[i] <= 2) student = "Двійочник"
-          else if (scores[i] === 3) student = "Трійочник"
-          else if (scores[i] === 4) student = "Хорошист"
-          else if (scores[i] === 5) student = "Відмінник"
+          if(scores[i] < min) min = scores[i]
+          if (min <= 2) student = "Двійочник"
+          else if (min === 3) student = "Трійочник"
+          else if (min === 4) student = "Хорошист"
+          else if (min === 5) student = "Відмінник"
         }
         return student
       }
