@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 1</title>
+  </head>
+  <body>
+    <h1>Задача 1</h1>
+    <p>
+      Користувач вводить кількість елементів. Створити масив, що складається з
+      вказаної кількості елементів заповнених нулями.
+    </p>
+    <script>
+      function inputArray(numberOfElements) {
+        let elementsArray = []
+        for (let i = 0; i < numberOfElements; i++) {
+          const numberOfElements = parseInt(
+            prompt("Введіть кількість елементів", "1")
+          )
+          elementsArray.push(numberOfElements)
+        }
+        return elementsArray
+      }
+
+      const numberOfElements = parseInt(
+        prompt("Введіть кількість елементів", "1")
+      )
+      const elementsArray = inputArray(numberOfElements)
+      let arr1 = elementsArray.fill(0)
+      document.write(`Массив: ${arr1}`)
+    </script>
+  </body>
+</html>

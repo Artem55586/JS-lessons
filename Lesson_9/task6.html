@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 6</title>
+  </head>
+  <body>
+    <h1>Задача 6</h1>
+    <p>
+      Дано масив елементів. Усі елементи, які більші за перший елемент помножити
+      на 2.
+    </p>
+    <script>
+      function inputArray(numberOfElements) {
+        const arrayOfElements = []
+        for (let i = 0; i < numberOfElements; i++) {
+          const element = parseFloat(prompt(`Введіть ${i + 1} елемент.`))
+          arrayOfElements.push(element)
+        }
+        return arrayOfElements
+      }
+      const numberOfElements = parseFloat(
+        prompt(`Введіть кількість елементів.`, "1")
+      )
+      arrayOfElements = inputArray(numberOfElements)
+
+      arrayOfElements.forEach((item, index, arrRef) => {
+        if (item > arrRef[0]) arrRef[index] = item * 2
+      })
+
+      document.write(`Новий масив: ${arrayOfElements}.`)
+    </script>
+  </body>
+</html>
