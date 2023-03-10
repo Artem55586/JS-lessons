@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 8</title>
+  </head>
+  <body>
+    <h1>Задача 8</h1>
+    <p>
+      Дано історію цін на цінні папери за деякий період (згенерувати від 1 до
+      10000). Підрахувати кількість цін, що більше за 1000
+    </p>
+    <script>
+      const min = 1
+      const max = 10000
+      const valuesNumber = parseInt(prompt("Введіть кількість цін", "1"))
+      function getRandomArray(min, max, valuesNumber) {
+        const randomArray = []
+        for (let i = 0; i < valuesNumber; i++) {
+          const ranNum = min + Math.floor(Math.random() * (max - min + 1))
+          randomArray.push(ranNum)
+        }
+        return randomArray
+      }
+
+      const randomArray = getRandomArray(min, max, valuesNumber)
+
+      const result = randomArray.reduce((total, element, index, arrRef) => {
+        if (element > 1000) total++
+        return total
+      }, 0)
+
+      document.write(
+        `Масив: ${randomArray}.<br> Підрахувати кількість цін, що більше за 1000: ${result}.`
+      )
+    </script>
+  </body>
+</html>

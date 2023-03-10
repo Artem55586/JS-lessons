@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 6</title>
+  </head>
+  <body>
+    <h1>Задача 6</h1>
+    <p>
+      Дано історію цін на цінні папери за деякий період (згенерувати від 1 до
+      10000). Визначити, чи є ціна, що менше 1000
+    </p>
+    <script>
+      const min = 1
+      const max = 10000
+      const valuesNumber = parseInt(prompt("Введіть кількість цін", "1"))
+      function getRandomArray(min, max, valuesNumber) {
+        const randomArray = []
+        for (let i = 0; i < valuesNumber; i++) {
+          const ranNum = min + Math.floor(Math.random() * (max - min + 1))
+          randomArray.push(ranNum)
+        }
+        return randomArray
+      }
+
+      const randomArray = getRandomArray(min, max, valuesNumber)
+
+      const ifLessThan1000 = randomArray.some(
+        (element, index, arrRef) => element < 1000
+      )
+      let result
+      if (ifLessThan1000 === true) result = "Так"
+      else result = "Ні"
+
+      document.write(
+        `Масив: ${randomArray}.<br> Визначити, чи є ціна, що менше 1000: ${result}.`
+      )
+    </script>
+  </body>
+</html>

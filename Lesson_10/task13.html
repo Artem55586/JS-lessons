@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 13</title>
+  </head>
+  <body>
+    <h1>Задача 13</h1>
+    <p>
+      Дано історію цін на цінні папери за деякий період (згенерувати від 1 до
+      10000). Знайти індекс останньої ціни, що більше за 1000.
+    </p>
+    <script>
+      const min = 1
+      const max = 10000
+      const valuesNumber = parseInt(prompt("Введіть кількість цін", "1"))
+      function getRandomArray(min, max, valuesNumber) {
+        let randomArray = []
+        for (let i = 0; i < valuesNumber; i++) {
+          const randNum = min + Math.floor(Math.random() * (max - min + 1))
+          randomArray.push(randNum)
+        }
+        return randomArray
+      }
+
+      const randomArray = getRandomArray(min, max, valuesNumber)
+
+      const result = randomArray.findLastIndex(
+        (element, index, arrRef) => element > 1000
+      )
+
+      document.write(
+        `Масив: ${randomArray}.<br> Найти індекс останньої ціни, що більше за 1000: ${result}.`
+      )
+    </script>
+  </body>
+</html>
