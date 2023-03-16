@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 3</title>
+  </head>
+  <body>
+    <h1>Задача 3</h1>
+    <p>Знайти суми елементів у вказаній області</p>
+    <script>
+      const min = 1
+      const max = 10000
+      const rowNumber = parseInt(prompt("Введіть кількість рядків", "1"))
+      const colNumber = parseInt(prompt("Введіть кількість стовбців", "1"))
+
+      function getRandomArray(min, max, arrLength) {
+        const randomArray = []
+        for (let i = 0; i < arrLength; i++) {
+          const randNum = min + Math.floor(Math.random() * (max - min + 1))
+          randomArray.push(randNum)
+        }
+        return randomArray
+      }
+
+      function generateRandomTable(min, max, rowNumber, colNumber) {
+        const table = []
+        for (let r = 0; r < rowNumber; r++) {
+          const randomRow = getRandomArray(min, max, colNumber)
+          table.push(randomRow)
+        }
+        return table
+      }
+
+      let table = generateRandomTable(min, max, rowNumber, colNumber)
+
+      function getTotalSum(table) {
+        let sum = 0
+        let averageRow = Math.floor(table.length / 2)
+        for (let r = averageRow; r < table.length; r++) {
+          let averageCol = Math.floor(table[r].length / 2)
+          for (let c = 0; c < averageCol; c++) {
+            sum = sum + table[r][c]
+          }
+        }
+        return sum
+      }
+
+      let sum = getTotalSum(table)
+
+      document.write("Масив: <br>")
+      document.write("<table border='1'>")
+      for (let r = 0; r < table.length; r++) {
+        document.write("<tr>")
+        for (let c = 0; c < table[r].length; c++) {
+          document.write(`<td>${table[r][c]}</td>`)
+        }
+        document.write("</tr>")
+      }
+      document.write("</table>")
+
+      document.write(`Сума елементів у вказаній області: ${sum}.`)
+    </script>
+  </body>
+</html>
