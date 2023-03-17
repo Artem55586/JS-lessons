@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 5</title>
+  </head>
+  <body>
+    <h1>Задача 5</h1>
+    <p>
+      Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук
+      визначити, чи є у масиві ім’я «Olga» і під яким індексом.
+    </p>
+    <script>
+      let names = [
+        "John",
+        "Paul",
+        "Olga",
+        "Andrew",
+        "Abram",
+        "Peter",
+        "Tina",
+        "Olga",
+        "Jack",
+        "Peter",
+      ]
+
+      // names.sort()
+
+      function insertSort(arr) {
+        for (let k = 1; k < arr.length; k++) {
+          const currentElement = arr[k]
+          let i = k - 1
+          while (i >= 0 && arr[i] > currentElement) {
+            arr[i + 1] = arr[i]
+            i = i - 1
+          }
+          arr[i + 1] = currentElement
+        }
+        return arr
+      }
+
+      let result = insertSort(names)
+
+      function includes_binarySearch(arr, searchElement) {
+        let start = 0
+        let end = arr.length - 1
+        while (start <= end) {
+          const middle = Math.floor((start + end) / 2)
+          if (arr[middle] === searchElement) return true
+          if (arr[middle] < searchElement) start = middle + 1
+          if (arr[middle] > searchElement) end = middle - 1
+        }
+        return false
+      }
+
+      if (includes_binarySearch(names, "Olga")) alert(`"Olga" входить у масив.`)
+      else alert(`"Olga" не входить у масив.`)
+
+      function findIndex_binarySearch(arr, searchElement) {
+        let start = 0
+        let end = arr.length - 1
+        while (start <= end) {
+          const middle = Math.floor((start + end) / 2)
+          if (arr[middle] === searchElement) return middle
+          if (arr[middle] < searchElement) start = middle + 1
+          if (arr[middle] > searchElement) end = middle - 1
+        }
+        return -1
+      }
+
+      const searchIndex = findIndex_binarySearch(names, "Olga")
+      if (searchIndex !== -1)
+        alert(`"Olga" входить у масив під індексом ${searchIndex}.`)
+      else alert(`"Olga" не входить у масив.`)
+
+      document.write(result)
+    </script>
+  </body>
+</html>

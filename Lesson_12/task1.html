@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 1</title>
+  </head>
+  <body>
+    <h1>Задача 1</h1>
+    <p>
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під
+      час сортування бульбашкою
+    </p>
+    <script>
+      const min = 1
+      const max = 10000
+      const maxNumber = 30
+
+      let field = []
+      for (let i = 0; i < maxNumber; i++) {
+        field[i] = min + Math.floor(Math.random() * (max - min + 1))
+      }
+
+      let list = "<ul>"
+      for (let i = 0; i < field.length; i++) {
+        list += "<li>" + field[i] + "</li>"
+      }
+      list += "</ul>"
+
+      document.write(list)
+
+      // let field = [
+      //   3, 21, 26, 76, 73, 53, 70, 92, 46, 75, 58, 46, 45, 43, 70, 82, 64, 79,
+      //   80, 41, 80, 42, 90, 85, 65, 1, 70, 27, 24, 96,
+      // ]
+
+      let counter = 0
+      let changed
+      do {
+        changed = false
+        for (let i = 1; i < field.length; i++) {
+          if (field[i - 1] > field[i]) {
+            ;[field[i - 1], field[i]] = [field[i], field[i - 1]]
+            changed = true
+            counter++
+            let table = "<table border='1'><tr>"
+            for (let i = 0; i < field.length; i++) {
+              table += "<td>" + field[i] + "</td>"
+            }
+            table += "</tr></table>"
+            document.write(table)
+          }
+        }
+      } while (changed)
+
+      document.write(`Відсортований масив: ${field}.<br>
+      Кількість обмінів: ${counter}.`)
+    </script>
+  </body>
+</html>

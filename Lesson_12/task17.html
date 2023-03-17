@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 17</title>
+  </head>
+  <body>
+    <h1>Задача 17</h1>
+    <p>
+      Морський бій. Випадковим чином на двовимірному полі розміром 6*6
+      розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра
+      продовжується поки не потоплено усі кораблі або у користувача не
+      закінчаться снаряди.
+    </p>
+    <script>
+      // let field = []
+      // for (let i = 0; i < 6; i++) {
+      //   field[i] = []
+      //   for (let j = 0; j < 6; j++) {
+      //     field[i][j] = []
+      //     for (let k = 0; k < 6; k++) {
+      //       field[i][j][k] = 0
+      //     }
+      //   }
+      // }
+      // document.write(field)
+
+      // const min = 1
+      // const max = 10000
+
+      // let field = []
+      // for (let i = 0; i < 6; i++) {
+      //   field[i] = []
+      //   for (let j = 0; j < 6; j++) {
+      //     field[i][j] = []
+      //     for (let k = 0; k < 6; k++) {
+      //       field[i][j][k] = min + Math.floor(Math.random() * (max - min + 1))
+      //     }
+      //   }
+      // }
+      // console.log(JSON.stringify(field))
+
+      const min = 1
+      const max = 10000
+      const layersNumber = 6
+      const rowsNumber = 6
+      const colsNumber = 6
+
+      let field = []
+      for (let i = 0; i < layersNumber; i++) {
+        field[i] = []
+        for (let j = 0; j < rowsNumber; j++) {
+          field[i][j] = []
+          for (let k = 0; k < colsNumber; k++) {
+            field[i][j][k] = min + Math.floor(Math.random() * (max - min + 1))
+          }
+        }
+      }
+
+      let table = "<table border='1'>"
+      for (let i = 0; i < field.length; i++) {
+        table += "<tr>"
+        for (let j = 0; j < field[i].length; j++) {
+          table += "<td>" + field[i][j].join(", ") + "</td>"
+        }
+        table += "</tr>"
+      }
+      table += "</table>"
+
+      document.write(table)
+
+      // let remainingShips = 5
+
+      // function placeShips() {
+      //   let shipsPlaced = 0
+      //   while (shipsPlaced < remainingShips) {
+      //     let x = Math.floor(Math.random() * 6)
+      //     let y = Math.floor(Math.random() * 6)
+      //     if (field[x][y] === 0) field[x][y] = 1
+      //     shipsPlaced++
+      //   }
+      // }
+
+      // placeShips()
+
+      // document.write("Масив: <br>")
+      // document.write("<table border='1'>")
+      // for (let r = 0; r < field.length; r++) {
+      //   document.write("<tr>")
+      //   for (let c = 0; c < field[r].length; c++) {
+      //     document.write(`<td>${field[r][c]}</td>`)
+      //   }
+      //   document.write("</tr>")
+      // }
+      // document.write("</table>")
+
+      // let shots = parseInt(
+      //   prompt("Введіть кількість пострілів (нагадуємо, що кораблів 5)", "5")
+      // )
+
+      // while (remainingShips > 0 && shots > 0) {
+      //   let x = prompt("Введіть номер рядка від 1 до 6")
+      //   let y = prompt("Введіть номер стовпця від 1 до 6")
+      //   if (field[x - 1][y - 1] === 1) {
+      //     alert("Ви потопили корабель")
+      //     remainingShips--
+      //   } else alert("Ви промазали")
+      //   shots--
+      // }
+
+      // if (remainingShips === 0) {
+      //   alert("Ви перемогли")
+      // } else {
+      //   alert(`Гра закінчилась. Спробуйте ще! Кількість потоплених кораблів: ${5 - remainingShips}. Кількість залишившихся пострілів: ${shots}.`)
+      // }
+    </script>
+  </body>
+</html>
