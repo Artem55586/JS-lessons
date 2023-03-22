@@ -24,8 +24,8 @@
       let num2 = min + Math.floor(Math.random() * (max - min + 1))
       let sum = num1 + num2
 
-      let answer = prompt(`Введіть відповідь: ${num1} + ${num2} = ?`)
-      if (sum == answer) alert('Правильно.')
+      let answer = parseInt(prompt(`Введіть відповідь: ${num1} + ${num2} = ?`))
+      if (sum === answer) alert('Правильно.')
       else alert('Неправильно!')
     }
 
