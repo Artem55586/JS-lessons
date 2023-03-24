@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задача 1</title>
+</head>
+
+<body>
+  <h1>Задача 1</h1>
+  <p>
+    Описати масив об’єктів – сайтів розроблених компанією з такими властивостями. Знайти:
+    1) загальну вартість усіх сайтів
+    2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+    3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+    4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+    5) знайти рік, коли прибуток був найбільшим
+    6) упорядкувати список за спаданням прибутку
+    7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000.
+  </p>
+  <script>
+    let arrWebsite = [
+      {
+        companyName: 'AAA',
+        owner: 'Andrew',
+        sponsors: [{
+          secondName: 'Petrov',
+          firstName: 'Petr',
+          sum: 1000
+        },
+        {
+          secondName: 'Ivanov',
+          firstName: 'Ivan',
+          sum: 10000
+        },
+        {
+          secondName: 'Sidorov',
+          firstName: 'Ivan',
+          sum: 100000
+        },
+        {
+          secondName: 'Kozlov',
+          firstName: 'Sergey',
+          sum: 200000
+        },
+        {
+          secondName: 'Yershov',
+          firstName: 'Andrey',
+          sum: 4000
+        }
+        ],
+        year: 2000,
+        price: 5000
+      },
+      {
+        companyName: 'BBB',
+        owner: 'Andrew',
+        sponsors: [{
+          secondName: 'Pimanov',
+          firstName: 'Roman',
+          sum: 7000
+        },
+        {
+          secondName: 'Kononov',
+          firstName: 'Ivan',
+          sum: 25000
+        },
+        {
+          secondName: 'Kononov',
+          firstName: 'Nikolay',
+          sum: 500000
+        },
+        {
+          secondName: 'Kononov',
+          firstName: 'Timur',
+          sum: 250000
+        },
+        {
+          secondName: 'Kononova',
+          firstName: 'Olga',
+          sum: 6000
+        }
+        ],
+        year: 2008,
+        price: 8000
+      },
+      {
+        companyName: 'CCC',
+        owner: 'Andrew',
+        sponsors: [{
+          secondName: 'Romancov',
+          firstName: 'Ilya',
+          sum: 18000
+        },
+        {
+          secondName: 'Romancov',
+          firstName: 'Sergey',
+          sum: 35000
+        },
+        {
+          secondName: 'Romancov',
+          firstName: 'Oleg',
+          sum: 30000
+        },
+        {
+          secondName: 'Romancova',
+          firstName: 'Svetlana',
+          sum: 550000
+        },
+        {
+          secondName: 'Romancov',
+          firstName: 'Vitaliy',
+          sum: 10000
+        }
+        ],
+        year: 2010,
+        price: 15000
+      },
+      {
+        companyName: 'DDD',
+        owner: 'Andrew',
+        sponsors: [{
+          secondName: 'Petrov',
+          firstName: 'Ilya',
+          sum: 28000
+        },
+        {
+          secondName: 'Petrov',
+          firstName: 'Sergey',
+          sum: 65000
+        },
+        {
+          secondName: 'Petrov',
+          firstName: 'Oleg',
+          sum: 1000
+        },
+        {
+          secondName: 'Petrova',
+          firstName: 'Svetlana',
+          sum: 220000
+        },
+        {
+          secondName: 'Petrov',
+          firstName: 'Vitaliy',
+          sum: 60000
+        }
+        ],
+        year: 2011,
+        price: 25000
+      }
+    ]
+
+    const totalPrice = arrWebsite.reduce((total, website) => total + website.price, 0)
+    const numberWebsiteBetween = arrWebsite.reduce((total, website) => {
+      return website.year >= 2000 && website.year <= 2009 ? total + 1 : total
+    },
+      0)
+
+    const numberWebsiteMore100000 = arrWebsite.reduce((total, website) => {
+      const sum = website.sponsors.reduce((total, sponsor) => total + sponsor.sum, 0)
+      if (sum > 100000) return total + 1
+      else return total
+    }, 0)
+
+    let allSponsors = []
+    for (const website of arrWebsite) {
+      allSponsors.push(website.sponsors)
+    }
+
+    console.log(allSponsors)
+
+
+    let maxProfit = 0
+    let maxYear = 0
+    for (const website of arrWebsite) {
+      const profit = website.price
+      if (profit > maxProfit) {
+        maxProfit = profit
+        maxYear = website.year
+      }
+    }
+
+    // const maxPrice = arrWebsite.reduce((prev, current) => (prev.price > current.price) ? prev : current)
+    // const maxProfit = maxPrice.price
+    // const maxYear = maxPrice.year
+
+    let listInDescendingOrderOfProfit = arrWebsite.sort((prev, current) => (current.price - prev.price))
+
+    console.log(listInDescendingOrderOfProfit)
+
+
+    let arrWebsiteLess10000 = arrWebsite.filter(element => element.price < 10000)
+    console.log(arrWebsiteLess10000)
+
+    let arrWebsiteMore10000 = arrWebsite.filter(element => element.price >= 10000)
+    console.log(arrWebsiteMore10000)
+
+    document.write(`
+    1) Загальна вартість усіх сайтів: ${totalPrice}.<br>
+    2) кількість сайтів, що було зроблено між 2000 та 2009 рр.: ${numberWebsiteBetween}.<br>
+    3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000: ${numberWebsiteMore100000}.<br>
+    4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив): ${allSponsors}.<br>
+    5) знайти рік: ${maxYear}, коли прибуток був найбільшим: ${maxProfit}.<br>
+    6) упорядкувати список за спаданням прибутку: ${listInDescendingOrderOfProfit}.<br>
+    7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000: ${arrWebsiteLess10000} і більше 10000: ${arrWebsiteMore10000}.<br>
+    `)
+  </script>
+</body>
+
+</html>
