@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задача 4</title>
+</head>
+
+<body>
+  <h1>Задача 4</h1>
+  <p>
+    Розробити клас Baner
+    Поля
+    Масив об’єктів ( графічних зображень та посилань на сайти)
+
+
+    методи
+    Метод випадкового вибору об’єкта (графічного зображення та посилання)
+    Метод виведення випадкового банера
+
+  </p>
+  <script>
+    class Banner {
+      constructor() {
+        this.arr = [
+          {
+            image: 'https://www.internetmatters.org/wp-content/uploads/2021/03/facebook-logo-new.png',
+            link: 'https://facebook.com/'
+          },
+          {
+            image: 'https://about.linkedin.com/etc.clientlibs/settings/wcm/designs/gandalf/clientlibs/resources/images/og-social-share-image.jpg',
+            link: 'https://ru.linkedin.com/'
+          },
+          {
+            image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png',
+            link: 'https://www.instagram.com/'
+          }
+        ]
+      }
+      getRandomObject() {
+        return this.arr[0 + Math.floor(Math.random() * (2 - 0 + 1))]
+      }
+
+      getRandomBanner() {
+        const banner = this.getRandomObject()
+        document.write(`<a target="_blank" href="${banner.link}"><img width='200px' src="${banner.image}" alt="Banner"></a>`)
+      }
+    }
+
+    let banner1 = new Banner()
+    banner1.getRandomBanner()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задача 2</title>
+</head>
+
+<body>
+  <h1>Задача 2</h1>
+  <p>
+    Створити об’єкт «Авто».
+    Авто
+
+
+    Поля(властивості)
+    Марка
+    Розмір бака
+    Кількість наявних літрів
+    Кількість місць
+    Кількість пасажирів
+    Методи (дії)
+    Заправка на вказану кількість літрів
+    Виведення кількості пасажирів
+    Додавання пасажирів
+    Висадка пасажирів
+
+  </p>
+  <script>
+    let auto = {
+      brand: 'Audi',
+      tankSize: 60,
+      numberOfLitersAvailable: 25,
+      numberOfSeats: 5,
+      numberOfPassengers: 3,
+      getRefuelingForTheSpecifiedNumberOfLiters: function (addedLiters) {
+        let result
+        if (this.numberOfLitersAvailable + addedLiters > this.tankSize) {
+          result = this.tankSize - this.numberOfLitersAvailable
+        } else result = addedLiters
+        return result
+      },
+      getOutputOfTheNumberOfPassengers: function () {
+        return document.write(`Кількість пасажирів: ${this.numberOfPassengers}.`)
+      },
+      getAddingPassengers: function (passengers) {
+        let result1
+        if (this.numberOfPassengers + passengers > this.numberOfSeats) {
+          result1 = this.numberOfSeats - this.numberOfPassengers
+        } else result1 = passengers
+        return result1
+      },
+      getDisembarkationOfPassengers: function (outPassengers) {
+        let result2
+        if (outPassengers >= this.numberOfPassengers) {
+          result2 = this.numberOfPassengers
+        } else result2 = outPassengers
+        return result2
+      }
+    }
+
+    let fuel = auto.getRefuelingForTheSpecifiedNumberOfLiters(10)
+    document.write(`Заправка на: ${fuel} літрів.<br>`)
+
+    let numberOfPassengers = auto.getOutputOfTheNumberOfPassengers()
+
+    let addPass = auto.getAddingPassengers(3)
+    document.write(`Можно добавити: ${addPass} пасажирів.<br>`)
+
+    let disembarkationPassengers = auto.getDisembarkationOfPassengers(2)
+    document.write(`Можно висадити: ${disembarkationPassengers} пасажирів.`)
+  </script>
+</body>
+
+</html>

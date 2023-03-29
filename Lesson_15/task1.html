@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задача 1</title>
+</head>
+
+<body>
+  <h1>Задача 1</h1>
+  <p>
+    Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+    Тир
+
+
+    Поля(властивості)
+    Масив, у якому зберігається поле з зайцями
+    Методи (дії)
+    Метод пострілу (задається позиція пострілу)
+    Виведення ігрового поля
+
+  </p>
+  <script>
+    // let shootingGallery = {
+    //   field: [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    //   theShotPositionIsSet: function (position) {
+    //     return position = parseInt(prompt(`Вкажіть клітинку пострілу від 1 до ${this.field.length}`))
+    //   },
+    //   getField: function () {
+    //     return this.field
+    //   }
+    // }
+
+    // let r1 = shootingGallery.getField()
+    // document.write(r1)
+
+
+    function ShootingGallery() {
+      this.field = [],
+      this.row = parseInt(prompt('Введіть кількість строк')),
+      this.column = parseInt(prompt('Введіть кількість столбців'))
+    }
+
+    ShootingGallery.prototype.getField = function () {
+      for (let i = 0; i < this.row; i++) {
+        this.field[i] = []
+        for (let j = 0; j < this.column; j++) {
+          this.field[i][j] = 0 + Math.floor(Math.random() * (1 - 0 + 1))
+        }
+      }
+    }
+
+    ShootingGallery.prototype.theShotPositionIsSet = function () {
+      const x = parseInt(prompt(`Вкажіть клітинку пострілу від 1 до ${this.row}`))
+      const y = parseInt(prompt(`Вкажіть клітинку пострілу від 1 до ${this.column}`))
+      if (this.field[x-1][y-1] === 1) {
+        this.field[x-1][y-1] = 0
+        return alert('Ви влучили!')
+      } else return alert('Ви не влучили!')
+    }
+
+    let shootingGallery = new ShootingGallery()
+    shootingGallery.getField()
+    document.write(shootingGallery.field)
+    // console.table(shootingGallery.field)
+    shootingGallery.theShotPositionIsSet()
+  </script>
+</body>
+
+</html>
