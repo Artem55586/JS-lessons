@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задача 3</title>
+</head>
+
+<body>
+  <h1>Задача 3</h1>
+  <p>
+    Задача 3. Об’єкт “Фірма” (використати члени-класи)
+    поля
+    назва фірми;
+    дата заснування (рік, місяць);
+    послуги (назва послуги, вартість, термін виконання);
+    адреси філіалів (країна, місто, вулиця, номер будинку);
+    методи
+    визначення кількості років існування фірми;
+    виведення всіх філіалів фірми у вказаному місті;
+    виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
+
+  </p>
+  <script>
+    // let firm = {
+    //   name: 'ABC',
+    //   dateOfEstablishment: { year: 2000, month: 2 },
+    //   services: [{
+    //     name: 'cleaning',
+    //     cost: 100,
+    //     duration: 2
+    //   }, {
+    //     name: 'washing',
+    //     cost: 200,
+    //     duration: 3
+    //   }],
+    //   branches: [{
+    //     country: 'USA',
+    //     city: 'Miami',
+    //     street: 'Broadway',
+    //     number: 3
+    //   }, {
+    //     country: 'Ukraine',
+    //     city: 'Kyiv',
+    //     street: 'Main Street',
+    //     number: 25
+    //   }, {
+    //     country: 'Ukraine',
+    //     city: 'Lviv',
+    //     street: 'Central Square',
+    //     number: 12
+    //   }],
+    // }
+
+
+    class Firm {
+      constructor(name, dateOfEstablishment, services, branches) {
+        this.name = name
+        this.dateOfEstablishment = dateOfEstablishment
+        this.services = services
+        this.branches = branches
+      }
+
+      getAge() {
+        let currentDate = new Date()
+        let ageInYears = currentDate.getFullYear() - this.dateOfEstablishment.year
+        let ageInMonths = currentDate.getMonth() - this.dateOfEstablishment.month + 1
+
+        if (ageInMonths < 0) {
+          ageInYears--
+          ageInMonths += 12
+        }
+
+        return `Firm age is ${ageInYears} years and ${ageInMonths} months`
+      }
+
+      getBranchesByCity(city) {
+        let filteredBranches = this.branches.filter(branch => branch.city === city)
+        let branchAddresses = filteredBranches.map(branch => `${branch.country}, ${branch.city}, ${branch.street}, ${branch.number}`)
+
+        return branchAddresses
+      }
+
+      getServicesByCostAndDuration(cost, duration) {
+        let filteredServices = this.services.filter(service => service.cost <= cost && service.duration <= duration)
+        let serviceNames = filteredServices.map(service => service.name)
+
+        return serviceNames
+      }
+      toString() {
+        return `Firm "${this.name}" established in ${this.dateOfEstablishment.year}, ${this.dateOfEstablishment.month}.`
+      }
+    }
+
+    let firm = new Firm(
+      'ABC',
+      { year: 2000, month: 2 },
+      [
+        { name: 'cleaning', cost: 100, duration: 2 },
+        { name: 'washing', cost: 200, duration: 3 }
+      ],
+      [
+        { country: 'USA', city: 'Miami', street: 'Broadway', number: 3 },
+        { country: 'Ukraine', city: 'Kyiv', street: 'Main Street', number: 25 },
+        { country: 'Ukraine', city: 'Lviv', street: 'Central Square', number: 12 }
+      ]
+    )
+
+    document.write(`${firm.getAge()}<br>`)
+    document.write(`${firm.getBranchesByCity('Kyiv')}<br>`)
+    document.write(`${firm.getServicesByCostAndDuration(150, 3)}<br>`)
+  </script>
+</body>
+
+</html>
