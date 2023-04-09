@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задача 1</title>
+</head>
+
+<body>
+  <h1>Задача 1</h1>
+  <p>
+    Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості
+    від’ємних,
+    кількість входжень деякого числа (статичні методи)
+  </p>
+  <script>
+    class ArrayOperations {
+      static numberOfPositiveOnesCounter = 0
+      static numberOfNegativesCounter = 0
+      static numberOfOccurrencesOfSomeNumberCounter = 0
+      constructor(arr) {
+        this.arr = [...arr]
+      }
+      static findingTheNumberOfPositiveOnes(arr) {
+        arr.filter(item => item > 0 ? ArrayOperations.numberOfPositiveOnesCounter++ : ArrayOperations.numberOfPositiveOnesCounter)
+        return ArrayOperations.numberOfPositiveOnesCounter
+      }
+      static findingTheNumberOfNegatives(arr) {
+        arr.filter(item => item < 0 ? ArrayOperations.numberOfNegativesCounter++ : ArrayOperations.numberOfNegativesCounter)
+        return ArrayOperations.numberOfNegativesCounter
+      }
+      static theNumberOfOccurrencesOfSomeNumber(arr, num) {
+        arr.filter(item => item === num ? ArrayOperations.numberOfOccurrencesOfSomeNumberCounter++ : ArrayOperations.numberOfOccurrencesOfSomeNumberCounter)
+        return ArrayOperations.numberOfOccurrencesOfSomeNumberCounter
+      }
+    }
+    let a1 = new ArrayOperations([-1, -2, -3, -3, -2, -1, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3])
+
+    document.write(`Кількість додатних: ${ArrayOperations.findingTheNumberOfPositiveOnes(a1.arr)},<br> кількість
+від’ємних: ${ArrayOperations.findingTheNumberOfNegatives(a1.arr)},<br> кількість входжень деякого числа :${ArrayOperations.theNumberOfOccurrencesOfSomeNumber(a1.arr, 3)}`)
+  </script>
+</body>
+
+</html>

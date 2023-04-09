@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задача 4</title>
+</head>
+
+<body>
+  <h1>Задача 4</h1>
+  <p>
+    Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва,
+    реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за
+    назвою
+    фірми
+  </p>
+  <script>
+    class Manufacturer {
+      constructor(manufacturerName, registrationNumber) {
+        this.manufacturerName = manufacturerName
+        this.registrationNumber = registrationNumber
+      }
+    }
+
+    class Product {
+      constructor(nameOfProduct, unitOfMeasurement, quantity, manufacturerName, registrationNumber) {
+        this.nameOfProduct = nameOfProduct
+        this.unitOfMeasurement = unitOfMeasurement
+        this.quantity = quantity
+        this.manufacturer = new Manufacturer(manufacturerName, registrationNumber)
+      }
+    }
+
+    class Storage {
+      constructor() {
+        this.products = []
+      }
+
+      addNewProduct(product) {
+        this.products.push(product)
+      }
+
+      removeProduct(productName, quantity) {
+        const productIndex = this.products.findIndex(product => product.nameOfProduct === productName)
+        if (productIndex !== -1) {
+          const product = this.products[productIndex]
+          if (product.quantity >= quantity) {
+            product.quantity -= quantity
+            if (product.quantity === 0) {
+              this.products.splice(productIndex, 1)
+            }
+            return true
+          }
+        }
+        return false
+      }
+
+
+      filterByNameOfProduct(nameOfProduct) {
+        return this.products.filter(product => product.nameOfProduct === nameOfProduct)
+      }
+
+      filterByManufacturerName(manufacturerName) {
+        return this.products.filter(product => product.manufacturer.manufacturerName === manufacturerName)
+      }
+    }
+
+    const product1 = new Product('Картофель', 'кг', 20, 'Агрофирма "Родничок"', '12345')
+    const product2 = new Product('Молоко', 'л', 5, 'Молочная ферма "Удача"', '67890')
+    const product3 = new Product('Яблоки', 'кг', 15, 'Садоводческое товарищество "Золотая осень"', '13579')
+
+    const storage = new Storage()
+
+    storage.addNewProduct(product1)
+    storage.addNewProduct(product2)
+    storage.addNewProduct(product3)
+
+    console.log(storage.products)
+
+    storage.removeProduct('Картофель', 5)
+    console.log(storage.products)
+
+    let f1 = storage.filterByNameOfProduct('Картофель')
+    console.log(f1)
+
+    let mf1 = storage.filterByManufacturerName('Молочная ферма "Удача"')
+    console.log(mf1)
+  </script>
+</body>
+
+</html>

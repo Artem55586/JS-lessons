@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задача 5</title>
+</head>
+
+<body>
+  <h1>Задача 5</h1>
+  <p>
+    Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва
+    книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки (спеціальна
+    література, хобі, домашнє господарство і т.д.), походження книги і наявність на даний час. Організувати
+    додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.
+  </p>
+  <script>
+    class Author {
+      constructor(name, birthdayYear, about) {
+        this.name = name
+        this.birthdayYear = birthdayYear
+        this.about = about
+      }
+    }
+
+    class PublishingHouse {
+      constructor(namePublishingHouse, registrationNumber, yearOfIntroduction) {
+        this.namePublishingHouse = namePublishingHouse
+        this.registrationNumber = registrationNumber
+        this.yearOfIntroduction = yearOfIntroduction
+      }
+    }
+
+    class Book {
+      constructor(authors, nameOfBook, genre, publishingHouse) {
+        this.authors = authors
+        this.nameOfBook = nameOfBook
+        this.genre = genre
+        this.publishingHouse = publishingHouse
+      }
+    }
+
+    class PersonalLibrary {
+      constructor() {
+        this.books = []
+      }
+
+      addBook(book) {
+        this.books.push(book)
+      }
+
+      removeBook(book) {
+        this.books.filter(item => item !== book)
+      }
+
+      selectionOfBooksByTitle(nameOfBook) {
+        return this.books.filter(item => item.nameOfBook === nameOfBook)
+      }
+
+      selectionOfBooksByAuthor(author) {
+        return this.books.filter(item => item.authors.includes(author))
+      }
+
+      selectionOfBooksByPublishingHouse(publishingHouseName) {
+        return this.books.filter(item => item.publishingHouse.namePublishingHouse === publishingHouseName)
+      }
+
+      selectionOfBooksByGenre(genre) {
+        return this.books.filter(item => item.genre === genre)
+      }
+
+      addSection(sectionName) {
+        this[sectionName] = []
+      }
+
+      addBookToSection(sectionName, book) {
+        if (!this[sectionName]) {
+          throw new Error(`The section "${sectionName}" does not exist in the personal library`)
+        }
+        this[sectionName].push(book)
+      }
+
+      removeBookFromSection(sectionName, book) {
+        if (!this[sectionName]) {
+          throw new Error(`The section "${sectionName}" does not exist in the personal library`)
+        }
+        this[sectionName] = this[sectionName].filter(item => item !== book)
+      }
+
+      isBookAvailable(book) {
+        return this.books.includes(book)
+      }
+
+      getAllBooks() {
+        return this.books
+      }
+    }
+
+    const author1 = new Author('Mark Twain', 1835, 'An American writer, humorist, entrepreneur, publisher, and lecturer.')
+    const author2 = new Author('Harper Lee', 1926, 'An American novelist widely known for her novel "To Kill a Mockingbird".')
+    const author3 = new Author('George Orwell', 1903, 'An English novelist, essayist, journalist, and critic.')
+
+    const publishingHouse1 = new PublishingHouse('Penguin Random House', '123456', 1927)
+    const publishingHouse2 = new PublishingHouse('HarperCollins', '654321', 1989)
+
+    const book1 = new Book([author1], 'The Adventures of Tom Sawyer', 'Fiction', publishingHouse1)
+    const book2 = new Book([author1, author3], '1984', 'Dystopia', publishingHouse2)
+    const book3 = new Book([author2], 'To Kill a Mockingbird', 'Coming-of-Age Story', publishingHouse1)
+
+    const myLibrary = new PersonalLibrary()
+    myLibrary.addBook(book1)
+    myLibrary.addBook(book2)
+    myLibrary.addBook(book3)
+
+    const isAvailable = myLibrary.isBookAvailable(book1)
+    console.log(isAvailable)
+
+    const allBooks = myLibrary.getAllBooks()
+    console.log(allBooks)
+
+    const booksByTitle = myLibrary.selectionOfBooksByTitle('1984')
+    console.log(booksByTitle)
+
+    const booksByAuthor = myLibrary.selectionOfBooksByAuthor(author1)
+    console.log(booksByAuthor)
+
+    const booksByPublishingHouse = myLibrary.selectionOfBooksByPublishingHouse('Penguin Random House')
+    console.log(booksByPublishingHouse)
+
+    const booksByGenre = myLibrary.selectionOfBooksByGenre('Coming-of-Age Story')
+    console.log(booksByGenre)
+
+    myLibrary.addSection('Fiction')
+
+    myLibrary.addBookToSection('Fiction', book1)
+
+    myLibrary.removeBookFromSection('Fiction', book1)
+
+    myLibrary.removeBook(book1)
+  </script>
+</body>
+
+</html>
