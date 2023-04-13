@@ -1,0 +1,44 @@
+body {
+  padding: 30px;
+}
+
+div {
+  background: rgb(244, 247, 255);
+  background: url(../images/speaker.png) 73%,
+    linear-gradient(
+      115deg,
+      rgba(244, 247, 255, 0) 61%,
+      rgba(48, 86, 211, 0.08) 61%,
+      rgba(244, 247, 255, 0) 100%
+    ),
+    linear-gradient(
+        115deg,
+        rgba(244, 247, 255, 0) 67%,
+        rgba(48, 86, 211, 0.08) 67%,
+        rgba(244, 247, 255, 0) 100%
+      )
+      #f4f7ff;
+  background-repeat: no-repeat;
+}
+
+li {
+  font-size: 25px;
+  color: greenyellow;
+  margin-bottom: 35px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1 {
+  font-size: 60px;
+  color: chocolate;
+}
+
+h2 {
+  font-size: 60px;
+  color: violet;
+}
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задача 7</title>
+</head>
+
+<body>
+  <h1>Задача 7</h1>
+  <p>
+    Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус,
+    літак -
+    випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати - radio
+    buttons).
+    Ціни визначте самі. Підрахувати загальну вартість.
+  </p>
+  <script>
+    function getSum() {
+      let sum = 0
+      const transportPrice = parseFloat(document.getElementById('transport').value)
+      sum = sum + transportPrice
+      const allInputs = document.getElementsByTagName('input')
+      for (const input of allInputs) {
+        if (input.checked) {
+          sum = sum + parseFloat(input.value)
+        }
+      }
+      document.querySelector('.trip__result').innerHTML = `Загальна вартість: ${sum}`
+    }
+
+    window.onload = function () {
+      document.querySelector('.trip__button').onclick = getSum
+    }
+  </script>
+  <div class="trip" action="#">
+    <div class="trip__transport transport">
+      <label class="transport__label" for="transport">Виберіть транспорт:
+        <select class="transport__select" name="transport" id="transport">
+          <option class="transport__option" value="100">авто</option>
+          <option class="transport__option" value="150">автобус</option>
+          <option class="transport__option" value="500">літак</option>
+        </select>
+      </label>
+    </div>
+    <div class="trip__food food">
+      Виберіть харчування:
+      <label class="food__breakfast-label" for="breakfast">сніданок</label>
+      <input class="food__breakfast-input" type="checkbox" name="breakfast" id="breakfast" value="50">
+      <label class="food__lunch-label" for="lunch">обід</label>
+      <input class="food__lunch-input" type="checkbox" name="lunch" id="lunch" value="100">
+      <label class="food__dinner-label" for="dinner">вечеря</label>
+      <input class="food__dinner-input" type="checkbox" name="dinner" id="dinner" value="150">
+    </div>
+    <div class="trip__guide guide">
+      Виберіть одного з 3-х гідів:
+      <label class="guide__a-label" for="AAA">AAA</label>
+      <input class="guide__a-input" type="radio" name="guide" id="AAA" value="1000">
+      <label class="guide__b-label" for="BBB">BBB</label>
+      <input class="guide__b-input" type="radio" name="guide" id="BBB" value="1200">
+      <label class="guide__c-label" for="CCC">CCC</label>
+      <input class="guide__c-input" type="radio" name="guide" id="CCC" value="1300">
+    </div>
+    <div class="trip__box-button">
+      <button class="trip__button" type="button">Підрахувати загальну вартість</button>
+    </div>
+    <div class="trip__result"></div>
+  </div>
+</body>
+
+</html>

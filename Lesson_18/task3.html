@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задача 3</title>
+</head>
+
+<body>
+  <h1>Задача 3</h1>
+  <p>
+    Користувач задає рік народження. Визначити кількість років користувача.
+  </p>
+  <script>
+    function userAge() {
+      const userYearOfBirthday = parseInt(document.querySelector('.years__start-input').value)
+      const now = new Date()
+      const nowYear = now.getFullYear()
+      const age = nowYear - userYearOfBirthday
+      document.querySelector('.years__end-input').value = age
+    }
+    window.onload = function () {
+      document.querySelector('.years__button').onclick = userAge
+    }
+  </script>
+  <form class="years" action="#" method="get">
+    <div class="years__box-user">
+      <label class="years__start-label" for="year">Вкажіть рік народження</label>
+      <input class="years__start-input" type="number" name="year" id="year" placeholder="0" value="0">
+    </div>
+    <div class="years__box-button">
+      <button class="years__button" type="button">Узнайте свою кількість років</button>
+    </div>
+    <div class="years__box-result">
+      <label class="years__end-label" for="years">Вам стількі років</label>
+      <input class="years__end-input" type="number" name="years" id="years" placeholder="0">
+    </div>
+  </form>
+</body>
+
+</html>

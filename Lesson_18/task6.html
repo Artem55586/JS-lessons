@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задача 6</title>
+</head>
+
+<body>
+  <h1>Задача 6</h1>
+  <p>
+    Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди
+    користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+  </p>
+
+  <div class="average" action="#" method="get">
+    <div class="average__box-user">
+      <label class="average__label" for="scores">Введіть кількість оцінок</label>
+      <input class="average__input" type="number" name="scores" id="scores" placeholder="0" value="0">
+    </div>
+    <div class="average__box-button">
+      <button class="average__button" type="button">Get table</button>
+    </div>
+  </div>
+  <script>
+    function getTable() {
+      const numberOfInputs = parseInt(document.querySelector('.average__input').value)
+      let table = document.createElement('table')
+      document.querySelector('.average__box-button').after(table)
+      for (let i = 0; i < numberOfInputs; i++) {
+        let row = document.createElement('tr')
+        let input = document.createElement('input')
+        input.setAttribute('name', 'score')
+        row.appendChild(document.createElement('td')).appendChild(input)
+        table.append(row)
+      }
+      let button = document.createElement('button')
+      button.innerText = 'Get sum'
+      document.querySelector('.average').append(button)
+      button.onclick = sum
+
+      function sum() {
+        let sum = 0
+        let average
+        const allScores = document.getElementsByName('score')
+        for (let i = 0; i < allScores.length; i++) {
+          sum = sum + parseInt(allScores[i].value)
+        }
+        average = (sum / allScores.length).toFixed(2)
+        let res = document.createElement('div')
+        res.innerText = `Cереднє значення: ${average}`
+        button.after(res)
+      }
+    }
+    document.querySelector('.average__button').onclick = getTable
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задача 1</title>
+</head>
+
+<body>
+  <h1>Задача 1</h1>
+  <p>
+    Розробити калькулятор
+  </p>
+  <script>
+    function sum() {
+      const n1 = parseFloat(document.querySelector('.calculator__first-number-input').value)
+      const n2 = parseFloat(document.querySelector('.calculator__second-number-input').value)
+      const sum = n1 + n2
+      document.querySelector('.calculator__result-input').value = sum
+    }
+
+    function subtraction() {
+      const n1 = parseFloat(document.querySelector('.calculator__first-number-input').value)
+      const n2 = parseFloat(document.querySelector('.calculator__second-number-input').value)
+      const subtraction = n1 - n2
+      document.querySelector('.calculator__result-input').value = subtraction
+    }
+
+    function multiplication() {
+      const n1 = parseFloat(document.querySelector('.calculator__first-number-input').value)
+      const n2 = parseFloat(document.querySelector('.calculator__second-number-input').value)
+      const multiplication = n1 * n2
+      document.querySelector('.calculator__result-input').value = multiplication
+    }
+
+    function division() {
+      const n1 = parseFloat(document.querySelector('.calculator__first-number-input').value)
+      const n2 = parseFloat(document.querySelector('.calculator__second-number-input').value)
+      const division = n1 / n2
+      document.querySelector('.calculator__result-input').value = division
+    }
+    window.onload = function () {
+      document.querySelector('.calculator__btn-sum').onclick = sum
+      document.querySelector('.calculator__btn-take-away').onclick = subtraction
+      document.querySelector('.calculator__btn-multiply').onclick = multiplication
+      document.querySelector('.calculator__btn-share').onclick = division
+    }
+  </script>
+
+  <form class="calculator" action="#" method="get">
+    <div class="calculator__box-first">
+      <label class="calculator__first-number-label" for="first-number">First number</label>
+      <input class="calculator__first-number-input" type="number" name="first-number" id="first-number" placeholder="0"
+        value="0">
+    </div>
+    <div class="calculator__box-second">
+      <label class="calculator__second-number-label" for="second-number">Second number</label>
+      <input class="calculator__second-number-input" type="number" name="second-number" id="second-number"
+        placeholder="0" value="0">
+    </div>
+    <button class="calculator__btn-sum" type="button">Додати</button>
+    <button class="calculator__btn-take-away" type="button">Відняти</button>
+    <button class="calculator__btn-multiply" type="button">Помножити</button>
+    <button class="calculator__btn-share" type="button">Поділити</button>
+    <div class="calculator__box-result">
+      <label class="calculator__result-label" for="result">Результат</label>
+      <input class="calculator__result-input" type="number" name="result" id="result" placeholder="0" value="0">
+    </div>
+  </form>
+</body>
+
+</html>
